@@ -11,14 +11,6 @@ import java.io.IOException;
 
 public class FeatureUtils {
 
-    @Autowired
-    AppConfig appConfig;
-
-    @PostConstruct
-    public void test() {
-        System.out.println("---------------------" + this.appConfig.getOneStreamAPIURL());
-    }
-
     public static String URL = "http://localhost:9001";
 
     public static Account getMockAccount() {
@@ -30,4 +22,5 @@ public class FeatureUtils {
             throw new RuntimeException(e);
         }
     }
+
 }
