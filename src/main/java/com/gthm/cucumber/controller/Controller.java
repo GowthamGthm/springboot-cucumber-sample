@@ -1,5 +1,7 @@
 package com.gthm.cucumber.controller;
 
+import com.gthm.cucumber.model.onestream.Packet;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import com.gthm.cucumber.service.AccountService;
 import java.util.Optional;
 
 @RestController
+@Slf4j
 public class Controller {
 
     @Autowired
@@ -33,9 +36,10 @@ public class Controller {
         return accountService.getAccount(id);
     }
 
-    @GetMapping("/onestream")
-    public ResponseEntity<String> test() {
-        return ResponseEntity.status(200).body("working");
+    @PostMapping("/onestream")
+    public ResponseEntity<String> onestream(@RequestBody Packet packet) {
+        log.info("======== controller received : {}" , packet.toString());
+        return ResponseEntity.status(200).body("SUCCESSFUL");
     }
     
 }

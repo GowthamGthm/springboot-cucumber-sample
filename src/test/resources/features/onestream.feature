@@ -1,5 +1,14 @@
 Feature: Test One Stream Feature
-  Scenario: Post to the OneStream
-    When I request the onestream endpoint "/version"
-    Then the response of onestream should be "0.0.1"
-    And the status code of onestream is 200
+
+  Scenario Outline: Post to the OneStream
+    Given I request the onestream request object for "<applicationID>"
+    When I call the onestream API with the requestObject
+    Then the response of onestream should be 200
+
+    Examples:
+      | applicationID |
+      | abcd-1111     |
+      | abcd-2222     |
+      | abcd-3333     |
+      | abcd-4444     |
+      | abcd-5555     |
